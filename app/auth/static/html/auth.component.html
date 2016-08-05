@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Authentication</div>
+    <div class="panel-body">
+        <div class="form">
+            <div class="alert alert-info" *ngIf="!checkComplete">
+                <b>Authenticating...</b>
+            </div>
+            <div class="btn-group-lg btn-group-vertical center-block" *ngIf="checkComplete">
+                <a class="btn btn-primary" [routerLink]="['/login']">LOGIN</a>
+                <a class="btn btn-success" [routerLink]="['/register']">REGISTER</a>
+            </div>
+        </div>
+    </div>
+</div>
