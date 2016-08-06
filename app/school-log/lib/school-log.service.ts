@@ -10,9 +10,13 @@ import { EntryQuery } from '../models/entry.query';
 export class SchoolLogService {
 
     private baseUrl =
-        'ec2-54-191-90-8.us-west-2.compute.amazonaws.com/school-log';
+        'http://ec2-54-191-90-8.us-west-2.compute.amazonaws.com/school-log';
     private childrenUrl = this.baseUrl + '/children';
     private entriesUrl = this.baseUrl + '/entries';
+
+    public children: Child[] = [];
+    public currentEntries: Entry[] = [];
+    public subjects: String[] = [];
 
     constructor ( private http: Http ) {}
 
@@ -27,6 +31,7 @@ export class SchoolLogService {
      */
     public getChildren ( token: String )
     {
+        var self = this;
         let headers = new Headers ({
             'Content-Type': 'application/json',
             'X-Auth': token
@@ -34,7 +39,8 @@ export class SchoolLogService {
         return this.http.get ( this.childrenUrl, { headers: headers } )
             .toPromise ().then ( function ( response )
             {
-                return response.json () as Child [];
+                self.children = response.json () as Child [];
+                return self.children;
             })
             .catch ( this.handleError );
     }

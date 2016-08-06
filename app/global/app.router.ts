@@ -5,6 +5,7 @@ import { AuthComponent } from '../auth/components/auth.component';
 import { LandingComponent } from '../auth/components/landing.component';
 import { LoginComponent } from '../auth/components/login.component';
 import { RegisterComponent } from '../auth/components/register.component';
+import { ManageStudentsComponent } from '../school-log/components/manage-students.component';
 
 const routes: RouterConfig = [
     {
@@ -16,6 +17,10 @@ const routes: RouterConfig = [
     {
         component: LandingComponent,
         path: 'main'
+    },
+    {
+        component: ManageStudentsComponent,
+        path: 'students'
     },
     // authentication
     {
