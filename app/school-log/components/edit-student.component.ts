@@ -9,12 +9,12 @@ import { Child } from '../models/child.model';
 
 @Component ({
     directives: [ROUTER_DIRECTIVES],
-    selector: 'school-log-manage-students',
-    templateUrl: 'app/school-log/static/html/manage-students.component.html'
+    selector: 'school-log-edit-student',
+    templateUrl: 'app/school-log/static/html/edit-student.component.html'
 })
-export class ManageStudentsComponent extends AuthCheckAbstractComponent implements DoCheck {
+export class EditStudentComponent extends AuthCheckAbstractComponent implements DoCheck {
 
-    public children: Child[] = [];
+    public student: Child;
 
     constructor ( protected authService: AuthService, protected router: Router,
         private editStudentService: EditStudentService,
@@ -23,23 +23,21 @@ export class ManageStudentsComponent extends AuthCheckAbstractComponent implemen
         super ( authService, router );
     }
 
-    edit ( student: Child )
+    cancel () { this.router.navigate ( ['students'] ); }
+    saveStudent ()
     {
-        this.editStudentService.currentStudent = student;
-        this.router.navigate ( ['/edit-student'] );
-    }
-
-    delete ( studentName: String, studentId: String )
-    {
-        var verify = confirm ( "Delete " + studentName + '?' );
-        if ( verify )
-            this.schoolLogService.deleteChild (
-                this.authService.getToken (), studentId );
-        else {}
+        var self = this;
+        this.schoolLogService.updateChild ( this.authService.getToken (),
+            this.student._id, this.student ).then ( function ()
+            {
+                self.schoolLogService.getChildren (
+                    self.authService.getToken () );
+                self.router.navigate ( ['/students'] );
+            });
     }
 
     ngDoCheck ()
     {
-        this.children = this.schoolLogService.children;
+        this.student = this.editStudentService.currentStudent;
     }
 }

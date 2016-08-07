@@ -2,8 +2,16 @@
  * Represents a child in the application.
  */
 export class Child {
-    age: Number;
+
+    _id: String;
+    /* age: Number;
     grade: Number;
-    name: String;
+    name: String; */
     user: String;
-}
+
+    constructor (
+        public name: String,
+        public age: Number,
+        public grade: Number
+    ) {}
+};

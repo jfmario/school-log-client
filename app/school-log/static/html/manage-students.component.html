@@ -7,13 +7,19 @@
             You have no students.
         </p>
 
-        <div class="list-group">
-            <a
+        <ul class="list-group">
+            <li
                 *ngFor="let student of children"
-                [class]="list-group-item"
-            >{{ student.name }}</a>
-            <a [routerLink]="['/newstudent']">Add Student</a>
-        </div>
+                class="list-group-item row"
+            >
+                <a class="col-md-6">{{ student.name }}</a>
+                <a class="col-md-3 label label-info" (click)="edit(student)">EDIT</a>
+                <a class="col-md-3 label label-danger" (click)="delete(student.name,student._id)">DELETE</a>
+            </li>
+            <li class="list-group-item row">
+                <a class="col-md-12" [routerLink]="['/newstudent']">Add Student</a>
+            </li>
+        </ul>
     </div>
     <div class="col-md-4"></div>
 </div>

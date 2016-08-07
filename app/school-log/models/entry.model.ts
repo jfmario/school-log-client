@@ -4,6 +4,7 @@
 
 export class Entry {
     child: String;
+    children: String[];
     date: Date;
     description: String;
     hours: Number;
