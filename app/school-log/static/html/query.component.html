@@ -1,0 +1,18 @@
+
+<div class="panel panel-info" *ngFor="let entry of entries">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ entry.date }}: {{ entry.subject }} ({{ entry.hours }} Hr)</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <ul>
+                    <li *ngFor="let student of entry.children">{{ student }}</li>
+                </ul>
+            </div>
+            <div class="col-sm-8">
+                <p>{{ entry.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>

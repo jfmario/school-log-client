@@ -15,6 +15,7 @@
     "node_modules",
     "typings/main",
     "typings/main.d.ts",
-    ".c9"
+    ".c9",
+    ".git"
   ]
 }

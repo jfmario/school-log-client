@@ -164,7 +164,7 @@ export class SchoolLogService {
             'Content-Type': 'application/json',
             'X-Auth': token
         });
-        return this.http.post ( this.entriesUrl, JSON.stringify ( query ),
+        return this.http.post ( this.entriesUrl + '/query', JSON.stringify ( query ),
             { headers: headers } )
             .toPromise ().then ( function ( response )
             {

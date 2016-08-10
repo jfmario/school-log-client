@@ -2,11 +2,11 @@
  * A class for querying the Entry database.
  */
 export class EntryQuery {
-    child: String;
+    children: String[];
     dateMin: Date;
     dateMax: Date;
-    description: String;
+    description: String[];
     hoursMin: Number;
     hoursMax: Number;
-    subject: String;
+    subject: String[];
 };

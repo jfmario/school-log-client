@@ -8,6 +8,7 @@ import { RegisterComponent } from '../auth/components/register.component';
 import { EditStudentComponent } from '../school-log/components/edit-student.component';
 import { ManageStudentsComponent } from '../school-log/components/manage-students.component';
 import { NewStudentComponent } from '../school-log/components/new-student.component';
+import { QueryComponent } from '../school-log/components/query.component';
 
 const routes: RouterConfig = [
     {
@@ -33,7 +34,7 @@ const routes: RouterConfig = [
         path: 'newstudent'
     },
     {
-        component: ManageStudentsComponent,
+        component: QueryComponent,
         path: 'query'
     },
     // authentication
