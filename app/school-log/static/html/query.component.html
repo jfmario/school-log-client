@@ -1,7 +1,77 @@
 
+<p><a href="/query#newEntry">Create New Entry</a></p>
+
+<div class="page-header">
+    <h2>Query Entries</h2>
+</div>
+
+<p>Leave values blank to search all.</p>
+
+<div class="form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <label for="students">Students</label>
+
+                <select id="students" class="form-control" [(ngModel)]="query.children" multiple>
+                    <option *ngFor="let student of students" [value]="student.name">{{ student.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <label for="dateMin">Begin Date</label>
+
+                <input id="dateMin" class="form-control" type="date" [(ngModel)]="query.dateMin"/>
+            </div>
+            <div class="form-group">
+
+                <label for="dateMax">End Date</label>
+
+                <input id="dateMax" class="form-control" type="date" [(ngModel)]="query.dateMax"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+
+                <label for="hoursMin">Min Hours</label>
+
+                <input id="hoursMin" class="form-control" type="number" [(ngModel)]="query.hoursMin"/>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+
+                <label for="hoursMax">Max Hours</label>
+
+                <input id="hoursMax" class="form-control" type="number" [(ngModel)]="query.hoursMax"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <label for="subject">Subject</label>
+
+                <input id="subject" class="form-control" type="text" [(ngModel)]="query.subject"/>
+            </div>
+        </div>
+    </div>
+    <div class="btn-group btn-group-justified">
+        <a class="btn btn-primary" (click)="submitQuery()">Query</a>
+    </div>
+</div>
+
+<div class="page-header">
+    <h2>Entries</h2>
+</div>
+
 <div class="panel panel-info" *ngFor="let entry of entries">
     <div class="panel-heading">
-        <h3 class="panel-title">{{ entry.date }}: {{ entry.subject }} ({{ entry.hours }} Hr)</h3>
+        <h3 class="panel-title">{{ entry.date | date:"MM/dd/yyyy" }}: {{ entry.subject }} ({{ entry.hours }} Hrs)</h3>
     </div>
     <div class="panel-body">
         <div class="row">
@@ -14,5 +84,65 @@
                 <p>{{ entry.description }}</p>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="page-header">
+    <h2 id="newEntry">New Entry</h2>
+</div>
+
+<p>A submission with a blank date will be automatically set to today.</p>
+
+<div class="form">
+    <div class="row">
+        <div *ngIf="entrySaved" class="alert alert-success"><b>Good!</b> New Entry saved.</div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+
+                <label for="newDate">Date</label>
+
+                <input id="newDate" class="form-control" type="date" [(ngModel)]="newEntry.date"/>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+
+                <label for="newSubject">Subject</label>
+
+                <input id="newSubject" class="form-control" type="text" [(ngModel)]="newEntry.subject"/>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+
+                <label for="newHours">Hours</label>
+
+                <input id="newHours" class="form-control" type="number" [(ngModel)]="newEntry.hours"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+
+                <label for="newStudents">Students</label>
+
+                <select id="newStudents" class="form-control" [(ngModel)]="newEntry.children" multiple>
+                    <option *ngFor="let student of students" [value]="student.name">{{ student.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-8">
+
+            <label for="newDescription">Description</label>
+
+            <textarea id="newDescription" class="form-control" [(ngModel)]="newEntry.description">
+            </textarea>
+        </div>
+    </div>
+    <div class="btn-group btn-group-justified">
+        <a class="btn btn-success" (click)="submitNewEntry()">Submit</a>
     </div>
 </div>
