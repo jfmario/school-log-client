@@ -50,8 +50,9 @@ export class QueryComponent extends AuthCheckAbstractComponent implements DoChec
                         var dateStr = moment ( this.entries [i].date ).format (
                             'MM/DD/YYYY' );
                         var line = dateStr + ',' + this.entries [i].children [j] +
-                            ',' + this.entries [i].subject + ',' +
-                            this.entries [i].hours + ',' + this.entries [i].description;
+                            ',"' + this.entries [i].subject + '",' +
+                            this.entries [i].hours + ',"' +
+                            this.entries [i].description + '"';
 
                         csvLines.push ( line );
                     }
