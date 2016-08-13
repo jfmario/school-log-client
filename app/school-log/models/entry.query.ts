@@ -7,5 +7,5 @@ export class EntryQuery {
     dateMax: Date;
     hoursMin: Number;
     hoursMax: Number;
-    subject: String[];
+    subject: String;
 };

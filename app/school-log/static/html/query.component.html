@@ -69,6 +69,10 @@
     <h2>Entries</h2>
 </div>
 
+<p><a class="btn btn-success" (click)="csvExport()">Export CSV</a></p>
+
+<br />
+
 <div class="panel panel-info" *ngFor="let entry of entries">
     <div class="panel-heading">
         <h3 class="panel-title">{{ entry.date | date:"MM/dd/yyyy" }}: {{ entry.subject }} ({{ entry.hours }} Hrs)</h3>
