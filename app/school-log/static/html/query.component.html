@@ -79,13 +79,16 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <ul>
                     <li *ngFor="let student of entry.children">{{ student }}</li>
                 </ul>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-6">
                 <p>{{ entry.description }}</p>
+            </div>
+            <div class="col-sm-3">
+                <a class="btn btn-warning">Edit</a>
             </div>
         </div>
     </div>
