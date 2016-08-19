@@ -4,6 +4,7 @@ import { AppComponent } from '../app.component';
 import { AuthComponent } from '../auth/components/auth.component';
 import { LandingComponent } from '../auth/components/landing.component';
 import { LoginComponent } from '../auth/components/login.component';
+import { LogoutComponent } from '../auth/components/logout.component';
 import { RegisterComponent } from '../auth/components/register.component';
 import { AboutComponent } from '../school-log/components/about.component';
 import { EditStudentComponent } from '../school-log/components/edit-student.component';
@@ -50,6 +51,10 @@ const routes: RouterConfig = [
     {
         component: LoginComponent,
         path: 'login'
+    },
+    {
+        component: LogoutComponent,
+        path: 'logout'
     },
     {
         component: RegisterComponent,

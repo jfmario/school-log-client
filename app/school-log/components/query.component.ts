@@ -69,7 +69,7 @@ export class QueryComponent extends AuthCheckAbstractComponent implements DoChec
             document.body.appendChild ( aTag );
             aTag.href = url;
             aTag.download = filename;
-            aTag.click ():
+            aTag.click ();
             // window.open ( url );
     }
     public submitNewEntry ()
