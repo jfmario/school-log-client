@@ -1,0 +1,56 @@
+<div class="panel panel-info">
+    <div class="panel-heading"><h3 class="panel-title">Edit Entry</h3></div>
+    <div class="panel-body">
+        <div class="form">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label for="newDate">Date</label>
+
+                        <input id="newDate" class="form-control" type="date" [(ngModel)]="entry.date"/>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label for="newSubject">Subject</label>
+
+                        <input id="newSubject" class="form-control" type="text" [(ngModel)]="entry.subject"/>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+
+                        <label for="newHours">Hours</label>
+
+                        <input id="newHours" class="form-control" type="number" [(ngModel)]="entry.hours"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+
+                        <label for="newStudents">Students</label>
+
+                        <select id="newStudents" class="form-control" [(ngModel)]="entry.children" multiple>
+                            <option *ngFor="let student of students" [value]="student.name">{{ student.name }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-8">
+
+                    <label for="newDescription">Description</label>
+
+                    <textarea id="newDescription" class="form-control" [(ngModel)]="entry.description">
+                    </textarea>
+                </div>
+            </div>
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-primary" (click)="saveEntry()">Save</a>
+                <a class="btn btn-warning" (click)="cancel()">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

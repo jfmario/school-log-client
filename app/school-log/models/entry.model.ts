@@ -4,6 +4,7 @@
 
 export class Entry {
 
+    _id: String;
     child: String;
     children: String[];
     date: Date;

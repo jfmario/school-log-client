@@ -3,6 +3,7 @@ import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { AuthService } from '../../auth/lib/auth.service';
 import { AuthCheckAbstractComponent } from '../../auth/middleware/auth-check.abstract.component';
+import { EditEntryService } from '../lib/edit-entry.service';
 import { SchoolLogService } from '../lib/school-log.service';
 import { Child } from '../models/child.model';
 import { Entry } from '../models/entry.model';
@@ -27,6 +28,7 @@ export class QueryComponent extends AuthCheckAbstractComponent implements DoChec
     public students: Child[] = [];
 
     constructor ( protected authService: AuthService, protected router: Router,
+        private editEntryService: EditEntryService,
         private schoolLogService: SchoolLogService )
     {
         super ( authService, router );
@@ -69,8 +71,21 @@ export class QueryComponent extends AuthCheckAbstractComponent implements DoChec
             document.body.appendChild ( aTag );
             aTag.href = url;
             aTag.download = filename;
-            aTag.click ():
+            aTag.click ();
             // window.open ( url );
+    }
+    public delete ( entryId: String )
+    {
+        var verify = confirm ( "Delete this entry?" );
+        if ( verify )
+            this.schoolLogService.deleteEntry (
+                this.authService.getToken (), entryId );
+        else {}
+    }
+    public edit ( entry: Entry )
+    {
+        this.editEntryService.currentEntry = entry;
+        this.router.navigate ( ['/edit-entry'] );
     }
     public submitNewEntry ()
     {

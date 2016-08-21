@@ -207,7 +207,7 @@ export class SchoolLogService {
             'Content-Type': 'application/json',
             'X-Auth': token
         });
-        return this.http.delete ( this.childrenUrl + '/' + entryId,
+        return this.http.delete ( this.entriesUrl + '/' + entryId,
             { headers: headers } )
             .toPromise ().then ( function ( response )
             {
