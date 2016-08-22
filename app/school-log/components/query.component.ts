@@ -10,6 +10,7 @@ import { EntryQuery } from '../models/entry.query';
 import 'rxjs/Rx' ;
 
 declare var document: any;
+declare var jsPDF: any;
 declare var moment: any;
 declare var window: any;
 
@@ -71,6 +72,21 @@ export class QueryComponent extends AuthCheckAbstractComponent implements DoChec
             aTag.download = filename;
             aTag.click ();
             // window.open ( url );
+    }
+    public pdfExport ()
+    {
+        
+        var columns = [
+            { key: 'date', title: 'Date' },
+            { key: 'children', title: 'Students' },
+            { key: 'subject', title: 'Subject' },
+            { key: 'hours', title: 'Hours' },
+            { key: 'description', title: 'Description' }
+        ];
+        var pdf = new jsPDF ( 'p', 'pt' );
+        
+        pdf.autoTable ( columns, this.entries );
+        pdf.save ( 'school-log-data.pdf' );
     }
     public submitNewEntry ()
     {
