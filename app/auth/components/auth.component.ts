@@ -15,11 +15,14 @@ export class AuthComponent implements OnInit {
 
     public checkComplete = false;
 
-    constructor ( private authService : AuthService, private router: Router ) {}
+    constructor ( private authService : AuthService, private router: Router ) {
+        console.log ( 'AuthComponent Constructor' );
+    }
 
     ngOnInit ()
     {
 
+        console.log ( 'init' );
         var self = this;
 
         if ( window.localStorage.hasOwnProperty ( 'jfmToken' ) )
@@ -37,6 +40,10 @@ export class AuthComponent implements OnInit {
                     self.checkComplete = true;
                 });
         }
-        else self.checkComplete = true;
+        else
+        {
+            console.log ( "no token" );
+            this.checkComplete = true;
+        }
     }
 };

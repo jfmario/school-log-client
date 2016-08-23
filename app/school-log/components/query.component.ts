@@ -88,20 +88,23 @@ export class QueryComponent extends AuthCheckAbstractComponent implements DoChec
         this.editEntryService.currentEntry = entry;
         this.router.navigate ( ['/edit-entry'] );
     }
+    public pdfExport2 ()
+    {
+
+    }
     public pdfExport ()
     {
 
-        var columns = [
-            { key: 'date', title: 'Date' },
-            { key: 'children', title: 'Students' },
-            { key: 'subject', title: 'Subject' },
-            { key: 'hours', title: 'Hours' },
-            { key: 'description', title: 'Description' }
-        ];
-        var pdf = new jsPDF ( 'p', 'pt' );
-
-        pdf.autoTable ( columns, this.entries );
-        pdf.save ( 'school-log-data.pdf' );
+        var url =
+            'http://school-log.johnfmarion.com/helpers/pdfexport.html?token=' +
+            this.authService.getToken ();
+        url += ( '&children=' + this.query.children.join ( ',' ) );
+        url += ( '&dateMin=' + this.query.dateMin );
+        url += ( '&dateMax=' + this.query.dateMax );
+        url += ( '&hoursMin=' + this.query.hoursMin );
+        url += ( '&hoursMax=' + this.query.hoursMax );
+        url += ( '&subject=' + this.query.subject );
+        window.open ( url );
     }
     public submitNewEntry ()
     {
